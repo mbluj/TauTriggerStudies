@@ -1,0 +1,12 @@
+--- L1Trigger/UCT2015/plugins/EfficiencyTree.cc.orig	2014-03-11 11:00:30.000000000 +0100
++++ L1Trigger/UCT2015/plugins/EfficiencyTree.cc	2014-03-11 10:51:02.000000000 +0100
+@@ -53,7 +53,8 @@
+   ntuple_(pset.getParameterSet("ntuple")) {
+     // Initialize the ntuple builder
+     edm::Service<TFileService> fs;
+-    ntuple_.initialize(*fs);
++    //MBntuple_.initialize(*fs);
++    ntuple_.initialize( fs->tFileDirectory() );//MB
+     recoSrc_ = pset.getParameter<VInputTag>("recoSrc");
+     pvSrc_ = pset.exists("pvSrc") ? pset.getParameter<edm::InputTag>("pvSrc") : edm::InputTag("offlinePrimaryVertices");
+     l1Src_ = pset.getParameter<VInputTag>("l1Src");
