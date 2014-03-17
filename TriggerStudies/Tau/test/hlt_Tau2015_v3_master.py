@@ -2,7 +2,8 @@
 
 # User switches
 isMC = True
-isFake = False
+is50ns = False #matters only for MC
+isFake = False #matters only for MC
 type = "All" # possible types: "All", "MuTau", "ElTau", "Tau"
 
 print "Analysis type: "+type
@@ -5815,9 +5816,19 @@ if type=="All" or type=="Tau":
 if not isMC:
 	execfile("source.py")
 else:
+	from SLHCUpgradeSimulations.Configuration.postLS1Customs import *
+        process = customise_HLT( process )
 	execfile("source_MC.py")
+	if is50ns:
+		process.GlobalTag.globaltag = 'POSTLS170_V6::All' #50ns
+	else:
+		process.GlobalTag.globaltag = 'POSTLS170_V7::All' #25ns
+
 
 process.maxEvents.input = -1
 #process.maxEvents.input = 100
+
+
+print "Global tag: ", process.GlobalTag.globaltag
 
 
