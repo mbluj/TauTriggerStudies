@@ -5820,9 +5820,9 @@ else:
         process = customise_HLT( process )
 	execfile("source_MC.py")
 	if is50ns:
-		process.GlobalTag.globaltag = 'POSTLS170_V6::All' #50ns
+		process.GlobalTag.globaltag = 'POSTLS170_V4::All' #50ns
 	else:
-		process.GlobalTag.globaltag = 'POSTLS170_V7::All' #25ns
+		process.GlobalTag.globaltag = 'POSTLS170_V3::All' #25ns
 
 
 process.maxEvents.input = -1
