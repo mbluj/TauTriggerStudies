@@ -5766,17 +5766,17 @@ execfile("online-tau-rereco_v3.1.py")
 if type=="All" or type=="MuTau":
     process.HLT_IsoMu17_eta2p1_LooseIsoPFTau20_v8.replace(
 	process.HLTIsoMuLooseIsoPFTauSequence,
-	process.hltTauSequence+process.hltTauMuVtxSequence
+	process.hltTauSequence+process.hltTauMuVtxSequence+process.hltIsoMuTauLegacySequence
    )
 if type=="All" or type=="ElTau":
     process.HLT_Ele22_eta2p1_WP90Rho_LooseIsoPFTau20_v8.replace(
 	process.HLTIsoEleLooseIsoPFTauSequence,
-	process.hltTauSequence+process.hltIsoEleVertex
+	process.hltTauSequence+process.hltIsoEleVertex+process.hltIsoEleTauLegacySequence
     )
 if type=="All" or type=="Tau":
     process.HLT_SingleLooseIsoPFTau20_v8.replace(
 	process.HLTLooseIsoPFTauSequence,
-	process.hltTauSequence
+	process.hltTauSequence+process.hltTauLegacySequence
     )
     process.HLT_SingleLooseIsoPFTau20_v8.remove(process.hltPFTau20)
     process.HLT_SingleLooseIsoPFTau20_v8.remove(process.hltPFTau20Track)

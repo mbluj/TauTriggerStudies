@@ -1893,3 +1893,213 @@ process.hltTauMuVtxSequence = cms.Sequence(
     process.hltPFTauSequnceNP +
     process.hltPatTausNP + process.selectedHltPatTausNP
     )
+
+
+## Legacy HLT taus for reference
+# MuTau
+# Most of stuff already in master, add isolation anti-mu and pat
+process.hltPFTauLooseIsolationDiscriminatorIsoMuTauLegacy =  process.hltPFTauLooseIsolationDiscriminatorOffVtx.clone()
+process.hltPFTauLooseIsolationDiscriminatorIsoMuTauLegacy.PFTauProducer = "hltIsoMuPFTaus"
+process.hltPFTauLooseIsolationDiscriminatorIsoMuTauLegacy.qualityCuts.primaryVertexSrc = "hltIsoMuonVertex"
+process.hltPFTauLooseIsolationDiscriminatorIsoMuTauLegacy.Prediscriminants.leadTrack.Producer = "hltIsoMuPFTauTrackFindingDiscriminator"
+process.hltPFTauLooseIsolationDiscriminator5hitsIsoMuTauLegacy = process.hltPFTauLooseIsolationDiscriminator5hitsOffVtx.clone() 
+process.hltPFTauLooseIsolationDiscriminator5hitsIsoMuTauLegacy.PFTauProducer = "hltIsoMuPFTaus"
+process.hltPFTauLooseIsolationDiscriminator5hitsIsoMuTauLegacy.qualityCuts.primaryVertexSrc = "hltIsoMuonVertex"
+process.hltPFTauLooseIsolationDiscriminator5hitsIsoMuTauLegacy.Prediscriminants.leadTrack.Producer = "hltIsoMuPFTauTrackFindingDiscriminator"
+process.hltPFTauLooseIsolationDiscriminator3hitsIsoMuTauLegacy = process.hltPFTauLooseIsolationDiscriminator3hitsOffVtx.clone() 
+process.hltPFTauLooseIsolationDiscriminator3hitsIsoMuTauLegacy.PFTauProducer = "hltIsoMuPFTaus"
+process.hltPFTauLooseIsolationDiscriminator3hitsIsoMuTauLegacy.qualityCuts.primaryVertexSrc = "hltIsoMuonVertex"
+process.hltPFTauLooseIsolationDiscriminator3hitsIsoMuTauLegacy.Prediscriminants.leadTrack.Producer = "hltIsoMuPFTauTrackFindingDiscriminator"
+process.hltPFTauECalIsolationDiscriminatorIsoMuTauLegacy = process.hltPFTauECalIsolationDiscriminatorOffVtx.clone()
+process.hltPFTauECalIsolationDiscriminatorIsoMuTauLegacy.PFTauProducer = "hltIsoMuPFTaus"
+process.hltPFTauECalIsolationDiscriminatorIsoMuTauLegacy.qualityCuts.primaryVertexSrc = "hltIsoMuonVertex"
+process.hltPFTauECalIsolationDiscriminatorIsoMuTauLegacy.Prediscriminants.leadTrack.Producer = "hltIsoMuPFTauTrackFindingDiscriminator"
+process.hltPFTauTrkIsolationDiscriminatorIsoMuTauLegacy = process.hltPFTauTrkIsolationDiscriminatorOffVtx.clone()
+process.hltPFTauTrkIsolationDiscriminatorIsoMuTauLegacy.PFTauProducer = "hltIsoMuPFTaus"
+process.hltPFTauTrkIsolationDiscriminatorIsoMuTauLegacy.qualityCuts.primaryVertexSrc = "hltIsoMuonVertex"
+process.hltPFTauTrkIsolationDiscriminatorIsoMuTauLegacy.Prediscriminants.leadTrack.Producer = "hltIsoMuPFTauTrackFindingDiscriminator"
+process.hltPFTauTrkIsolationDiscriminator5hitsIsoMuTauLegacy = process.hltPFTauTrkIsolationDiscriminator5hitsOffVtx.clone()
+process.hltPFTauTrkIsolationDiscriminator5hitsIsoMuTauLegacy.PFTauProducer = "hltIsoMuPFTaus"
+process.hltPFTauTrkIsolationDiscriminator5hitsIsoMuTauLegacy.qualityCuts.primaryVertexSrc = "hltIsoMuonVertex"
+process.hltPFTauTrkIsolationDiscriminator5hitsIsoMuTauLegacy.Prediscriminants.leadTrack.Producer = "hltIsoMuPFTauTrackFindingDiscriminator"
+process.hltPFTauTrkIsolationDiscriminator3hitsIsoMuTauLegacy = process.hltPFTauTrkIsolationDiscriminator3hitsOffVtx.clone()
+process.hltPFTauTrkIsolationDiscriminator3hitsIsoMuTauLegacy.PFTauProducer = "hltIsoMuPFTaus"
+process.hltPFTauTrkIsolationDiscriminator3hitsIsoMuTauLegacy.qualityCuts.primaryVertexSrc = "hltIsoMuonVertex"
+process.hltPFTauTrkIsolationDiscriminator3hitsIsoMuTauLegacy.Prediscriminants.leadTrack.Producer = "hltIsoMuPFTauTrackFindingDiscriminator"
+process.hltPFTauAgainstMuonDiscriminatorLooseIsoMuTauLegacy = process.hltPFTauAgainstMuonDiscriminatorLooseOffVtx.clone()
+process.hltPFTauAgainstMuonDiscriminatorLooseIsoMuTauLegacy.PFTauProducer = "hltIsoMuPFTaus"
+process.hltPFTauAgainstMuonDiscriminatorHoPIsoMuTauLegacy = process.hltPFTauAgainstMuonDiscriminatorHoPOffVtx.clone()
+process.hltPFTauAgainstMuonDiscriminatorHoPIsoMuTauLegacy.PFTauProducer = "hltIsoMuPFTaus"
+#
+process.hltPatTausIsoMuLegacy = hltPatTausGeneric.clone(tauSource = 'hltIsoMuPFTaus')
+process.hltPatTausIsoMuLegacy.tauIDSources = cms.PSet(
+        decayModeFinding = cms.InputTag("hltIsoMuPFTauTrackFindingDiscriminator"),
+        byIsolation = cms.InputTag("hltPFTauLooseIsolationDiscriminatorIsoMuTauLegacy"),
+        byIsolation5hits = cms.InputTag("hltPFTauLooseIsolationDiscriminator5hitsIsoMuTauLegacy"),
+        byIsolation3hits = cms.InputTag("hltPFTauLooseIsolationDiscriminator3hitsIsoMuTauLegacy"),
+        byECalIsolation = cms.InputTag("hltPFTauECalIsolationDiscriminatorIsoMuTauLegacy"),
+        byTrkIsolation = cms.InputTag("hltPFTauTrkIsolationDiscriminatorIsoMuTauLegacy"),
+        byTrkIsolation5hits = cms.InputTag("hltPFTauTrkIsolationDiscriminator5hitsIsoMuTauLegacy"),
+        byTrkIsolation3hits = cms.InputTag("hltPFTauTrkIsolationDiscriminator3hitsIsoMuTauLegacy"),
+        againstMuonLoose = cms.InputTag("hltPFTauAgainstMuonDiscriminatorLooseIsoMuTauLegacy"),
+        againstMuonHoP = cms.InputTag("hltPFTauAgainstMuonDiscriminatorHoPIsoMuTauLegacy"),
+        )
+process.selectedHltPatTausIsoMuLegacy = process.selectedHltPatTaus.clone(src='hltPatTausIsoMuLegacy')
+# 
+process.hltIsoMuTauLegacySequence = cms.Sequence(
+    # from master
+    process.hltPFTauJetTracksAssociator + 
+    process.hltIsoMuonVertex + 
+    process.hltIsoMuPFTauTagInfo + 
+    process.hltIsoMuPFTaus +
+    process.hltIsoMuPFTauTrackFindingDiscriminator +
+    # defined in this config
+    process.hltPFTauLooseIsolationDiscriminatorIsoMuTauLegacy + 
+    process.hltPFTauLooseIsolationDiscriminator5hitsIsoMuTauLegacy + 
+    process.hltPFTauLooseIsolationDiscriminator3hitsIsoMuTauLegacy + 
+    process.hltPFTauECalIsolationDiscriminatorIsoMuTauLegacy +
+    process.hltPFTauTrkIsolationDiscriminatorIsoMuTauLegacy +
+    process.hltPFTauTrkIsolationDiscriminator5hitsIsoMuTauLegacy +
+    process.hltPFTauTrkIsolationDiscriminator3hitsIsoMuTauLegacy
+    + process.hltPFTauAgainstMuonDiscriminatorLooseIsoMuTauLegacy
+    + process.hltPFTauAgainstMuonDiscriminatorHoPIsoMuTauLegacy
+    # pat
+    + process.hltPatTausIsoMuLegacy + process.selectedHltPatTausIsoMuLegacy
+)
+# EleTau
+# Most of stuff already in master, add isolation anti-mu and pat
+process.hltPFTauLooseIsolationDiscriminatorIsoEleTauLegacy =  process.hltPFTauLooseIsolationDiscriminatorOffVtx.clone()
+process.hltPFTauLooseIsolationDiscriminatorIsoEleTauLegacy.PFTauProducer = "hltIsoElePFTaus"
+process.hltPFTauLooseIsolationDiscriminatorIsoEleTauLegacy.qualityCuts.primaryVertexSrc = "hltIsoEleVertex"
+process.hltPFTauLooseIsolationDiscriminatorIsoEleTauLegacy.Prediscriminants.leadTrack.Producer = "hltIsoElePFTauTrackFindingDiscriminator"
+process.hltPFTauLooseIsolationDiscriminator5hitsIsoEleTauLegacy = process.hltPFTauLooseIsolationDiscriminator5hitsOffVtx.clone() 
+process.hltPFTauLooseIsolationDiscriminator5hitsIsoEleTauLegacy.PFTauProducer = "hltIsoElePFTaus"
+process.hltPFTauLooseIsolationDiscriminator5hitsIsoEleTauLegacy.qualityCuts.primaryVertexSrc = "hltIsoEleVertex"
+process.hltPFTauLooseIsolationDiscriminator5hitsIsoEleTauLegacy.Prediscriminants.leadTrack.Producer = "hltIsoElePFTauTrackFindingDiscriminator"
+process.hltPFTauLooseIsolationDiscriminator3hitsIsoEleTauLegacy = process.hltPFTauLooseIsolationDiscriminator3hitsOffVtx.clone() 
+process.hltPFTauLooseIsolationDiscriminator3hitsIsoEleTauLegacy.PFTauProducer = "hltIsoElePFTaus"
+process.hltPFTauLooseIsolationDiscriminator3hitsIsoEleTauLegacy.qualityCuts.primaryVertexSrc = "hltIsoEleVertex"
+process.hltPFTauLooseIsolationDiscriminator3hitsIsoEleTauLegacy.Prediscriminants.leadTrack.Producer = "hltIsoElePFTauTrackFindingDiscriminator"
+process.hltPFTauECalIsolationDiscriminatorIsoEleTauLegacy = process.hltPFTauECalIsolationDiscriminatorOffVtx.clone()
+process.hltPFTauECalIsolationDiscriminatorIsoEleTauLegacy.PFTauProducer = "hltIsoElePFTaus"
+process.hltPFTauECalIsolationDiscriminatorIsoEleTauLegacy.qualityCuts.primaryVertexSrc = "hltIsoEleVertex"
+process.hltPFTauECalIsolationDiscriminatorIsoEleTauLegacy.Prediscriminants.leadTrack.Producer = "hltIsoElePFTauTrackFindingDiscriminator"
+process.hltPFTauTrkIsolationDiscriminatorIsoEleTauLegacy = process.hltPFTauTrkIsolationDiscriminatorOffVtx.clone()
+process.hltPFTauTrkIsolationDiscriminatorIsoEleTauLegacy.PFTauProducer = "hltIsoElePFTaus"
+process.hltPFTauTrkIsolationDiscriminatorIsoEleTauLegacy.qualityCuts.primaryVertexSrc = "hltIsoEleVertex"
+process.hltPFTauTrkIsolationDiscriminatorIsoEleTauLegacy.Prediscriminants.leadTrack.Producer = "hltIsoElePFTauTrackFindingDiscriminator"
+process.hltPFTauTrkIsolationDiscriminator5hitsIsoEleTauLegacy = process.hltPFTauTrkIsolationDiscriminator5hitsOffVtx.clone()
+process.hltPFTauTrkIsolationDiscriminator5hitsIsoEleTauLegacy.PFTauProducer = "hltIsoElePFTaus"
+process.hltPFTauTrkIsolationDiscriminator5hitsIsoEleTauLegacy.qualityCuts.primaryVertexSrc = "hltIsoEleVertex"
+process.hltPFTauTrkIsolationDiscriminator5hitsIsoEleTauLegacy.Prediscriminants.leadTrack.Producer = "hltIsoElePFTauTrackFindingDiscriminator"
+process.hltPFTauTrkIsolationDiscriminator3hitsIsoEleTauLegacy = process.hltPFTauTrkIsolationDiscriminator3hitsOffVtx.clone()
+process.hltPFTauTrkIsolationDiscriminator3hitsIsoEleTauLegacy.PFTauProducer = "hltIsoElePFTaus"
+process.hltPFTauTrkIsolationDiscriminator3hitsIsoEleTauLegacy.qualityCuts.primaryVertexSrc = "hltIsoEleVertex"
+process.hltPFTauTrkIsolationDiscriminator3hitsIsoEleTauLegacy.Prediscriminants.leadTrack.Producer = "hltIsoElePFTauTrackFindingDiscriminator"
+process.hltPFTauAgainstMuonDiscriminatorLooseIsoEleTauLegacy = process.hltPFTauAgainstMuonDiscriminatorLooseOffVtx.clone()
+process.hltPFTauAgainstMuonDiscriminatorLooseIsoEleTauLegacy.PFTauProducer = "hltIsoElePFTaus"
+process.hltPFTauAgainstMuonDiscriminatorHoPIsoEleTauLegacy = process.hltPFTauAgainstMuonDiscriminatorHoPOffVtx.clone()
+process.hltPFTauAgainstMuonDiscriminatorHoPIsoEleTauLegacy.PFTauProducer = "hltIsoElePFTaus"
+#
+process.hltPatTausIsoEleLegacy = hltPatTausGeneric.clone(tauSource = 'hltIsoElePFTaus')
+process.hltPatTausIsoEleLegacy.tauIDSources = cms.PSet(
+        decayModeFinding = cms.InputTag("hltIsoElePFTauTrackFindingDiscriminator"),
+        byIsolation = cms.InputTag("hltPFTauLooseIsolationDiscriminatorIsoEleTauLegacy"),
+        byIsolation5hits = cms.InputTag("hltPFTauLooseIsolationDiscriminator5hitsIsoEleTauLegacy"),
+        byIsolation3hits = cms.InputTag("hltPFTauLooseIsolationDiscriminator3hitsIsoEleTauLegacy"),
+        byECalIsolation = cms.InputTag("hltPFTauECalIsolationDiscriminatorIsoEleTauLegacy"),
+        byTrkIsolation = cms.InputTag("hltPFTauTrkIsolationDiscriminatorIsoEleTauLegacy"),
+        byTrkIsolation5hits = cms.InputTag("hltPFTauTrkIsolationDiscriminator5hitsIsoEleTauLegacy"),
+        byTrkIsolation3hits = cms.InputTag("hltPFTauTrkIsolationDiscriminator3hitsIsoEleTauLegacy"),
+        againstMuonLoose = cms.InputTag("hltPFTauAgainstMuonDiscriminatorLooseIsoEleTauLegacy"),
+        againstMuonHoP = cms.InputTag("hltPFTauAgainstMuonDiscriminatorHoPIsoEleTauLegacy"),
+        )
+process.selectedHltPatTausIsoEleLegacy = process.selectedHltPatTaus.clone(src='hltPatTausIsoEleLegacy')
+#
+process.hltIsoEleTauLegacySequence = cms.Sequence(
+    # from master
+    process.hltPFTauJetTracksAssociator + 
+    process.hltIsoEleVertex + 
+    process.hltIsoElePFTauTagInfo + 
+    process.hltIsoElePFTaus + 
+    process.hltIsoElePFTau20 + 
+    process.hltIsoElePFTauTrackFindingDiscriminator +
+    # defined in this config
+    process.hltPFTauLooseIsolationDiscriminatorIsoEleTauLegacy + 
+    process.hltPFTauLooseIsolationDiscriminator5hitsIsoEleTauLegacy + 
+    process.hltPFTauLooseIsolationDiscriminator3hitsIsoEleTauLegacy + 
+    process.hltPFTauECalIsolationDiscriminatorIsoEleTauLegacy +
+    process.hltPFTauTrkIsolationDiscriminatorIsoEleTauLegacy +
+    process.hltPFTauTrkIsolationDiscriminator5hitsIsoEleTauLegacy +
+    process.hltPFTauTrkIsolationDiscriminator3hitsIsoEleTauLegacy
+    + process.hltPFTauAgainstMuonDiscriminatorLooseIsoEleTauLegacy
+    + process.hltPFTauAgainstMuonDiscriminatorHoPIsoEleTauLegacy
+    # pat
+    + process.hltPatTausIsoEleLegacy + process.selectedHltPatTausIsoEleLegacy
+)
+
+# singleTau
+# Most of stuff already in master, add isolation anti-mu and pat
+process.hltPFTauLooseIsolationDiscriminator5hitsTauLegacy = process.hltPFTauLooseIsolationDiscriminator5hitsOffVtx.clone() 
+process.hltPFTauLooseIsolationDiscriminator5hitsTauLegacy.PFTauProducer = "hltPFTaus"
+process.hltPFTauLooseIsolationDiscriminator5hitsTauLegacy.qualityCuts.primaryVertexSrc = "hltPixelVertices"
+process.hltPFTauLooseIsolationDiscriminator5hitsTauLegacy.Prediscriminants.leadTrack.Producer = "hltPFTauTrackFindingDiscriminator"
+process.hltPFTauLooseIsolationDiscriminator3hitsTauLegacy = process.hltPFTauLooseIsolationDiscriminator3hitsOffVtx.clone() 
+process.hltPFTauLooseIsolationDiscriminator3hitsTauLegacy.PFTauProducer = "hltPFTaus"
+process.hltPFTauLooseIsolationDiscriminator3hitsTauLegacy.qualityCuts.primaryVertexSrc = "hltPixelVertices"
+process.hltPFTauLooseIsolationDiscriminator3hitsTauLegacy.Prediscriminants.leadTrack.Producer = "hltPFTauTrackFindingDiscriminator"
+process.hltPFTauECalIsolationDiscriminatorTauLegacy = process.hltPFTauECalIsolationDiscriminatorOffVtx.clone()
+process.hltPFTauECalIsolationDiscriminatorTauLegacy.PFTauProducer = "hltPFTaus"
+process.hltPFTauECalIsolationDiscriminatorTauLegacy.qualityCuts.primaryVertexSrc = "hltPixelVertices"
+process.hltPFTauECalIsolationDiscriminatorTauLegacy.Prediscriminants.leadTrack.Producer = "hltPFTauTrackFindingDiscriminator"
+process.hltPFTauTrkIsolationDiscriminatorTauLegacy = process.hltPFTauTrkIsolationDiscriminatorOffVtx.clone()
+process.hltPFTauTrkIsolationDiscriminatorTauLegacy.PFTauProducer = "hltPFTaus"
+process.hltPFTauTrkIsolationDiscriminatorTauLegacy.qualityCuts.primaryVertexSrc = "hltPixelVertices"
+process.hltPFTauTrkIsolationDiscriminatorTauLegacy.Prediscriminants.leadTrack.Producer = "hltPFTauTrackFindingDiscriminator"
+process.hltPFTauTrkIsolationDiscriminator5hitsTauLegacy = process.hltPFTauTrkIsolationDiscriminator5hitsOffVtx.clone()
+process.hltPFTauTrkIsolationDiscriminator5hitsTauLegacy.PFTauProducer = "hltPFTaus"
+process.hltPFTauTrkIsolationDiscriminator5hitsTauLegacy.qualityCuts.primaryVertexSrc = "hltPixelVertices"
+process.hltPFTauTrkIsolationDiscriminator5hitsTauLegacy.Prediscriminants.leadTrack.Producer = "hltPFTauTrackFindingDiscriminator"
+process.hltPFTauTrkIsolationDiscriminator3hitsTauLegacy = process.hltPFTauTrkIsolationDiscriminator3hitsOffVtx.clone()
+process.hltPFTauTrkIsolationDiscriminator3hitsTauLegacy.PFTauProducer = "hltPFTaus"
+process.hltPFTauTrkIsolationDiscriminator3hitsTauLegacy.qualityCuts.primaryVertexSrc = "hltPixelVertices"
+process.hltPFTauTrkIsolationDiscriminator3hitsTauLegacy.Prediscriminants.leadTrack.Producer = "hltPFTauTrackFindingDiscriminator"
+process.hltPFTauAgainstMuonDiscriminatorLooseTauLegacy = process.hltPFTauAgainstMuonDiscriminatorLooseOffVtx.clone()
+process.hltPFTauAgainstMuonDiscriminatorLooseTauLegacy.PFTauProducer = "hltPFTaus"
+process.hltPFTauAgainstMuonDiscriminatorHoPTauLegacy = process.hltPFTauAgainstMuonDiscriminatorHoPOffVtx.clone()
+process.hltPFTauAgainstMuonDiscriminatorHoPTauLegacy.PFTauProducer = "hltPFTaus"
+#
+process.hltPatTausLegacy = hltPatTausGeneric.clone(tauSource = 'hltPFTaus')
+process.hltPatTausLegacy.tauIDSources = cms.PSet(
+        decayModeFinding = cms.InputTag("hltPFTauTrackFindingDiscriminator"),
+        byIsolation = cms.InputTag("hltPFTauLooseIsolationDiscriminator"),
+        byIsolation5hits = cms.InputTag("hltPFTauLooseIsolationDiscriminator5hitsTauLegacy"),
+        byIsolation3hits = cms.InputTag("hltPFTauLooseIsolationDiscriminator3hitsTauLegacy"),
+        byECalIsolation = cms.InputTag("hltPFTauECalIsolationDiscriminatorTauLegacy"),
+        byTrkIsolation = cms.InputTag("hltPFTauTrkIsolationDiscriminatorTauLegacy"),
+        byTrkIsolation5hits = cms.InputTag("hltPFTauTrkIsolationDiscriminator5hitsTauLegacy"),
+        byTrkIsolation3hits = cms.InputTag("hltPFTauTrkIsolationDiscriminator3hitsTauLegacy"),
+        againstMuonLoose = cms.InputTag("hltPFTauAgainstMuonDiscriminatorLooseTauLegacy"),
+        againstMuonHoP = cms.InputTag("hltPFTauAgainstMuonDiscriminatorHoPTauLegacy"),
+        )
+process.selectedHltPatTausLegacy = process.selectedHltPatTaus.clone(src='hltPatTausLegacy')
+#
+process.hltTauLegacySequence = cms.Sequence( 
+    # from master
+    process.hltPFTauJetTracksAssociator + 
+    process.hltPFTauTagInfo + 
+    process.hltPFTaus + 
+    process.hltPFTauTrackFindingDiscriminator + 
+    process.hltPFTauLooseIsolationDiscriminator +
+    # defined in this config
+    process.hltPFTauLooseIsolationDiscriminator5hitsTauLegacy + 
+    process.hltPFTauLooseIsolationDiscriminator3hitsTauLegacy + 
+    process.hltPFTauECalIsolationDiscriminatorTauLegacy +
+    process.hltPFTauTrkIsolationDiscriminatorTauLegacy +
+    process.hltPFTauTrkIsolationDiscriminator5hitsTauLegacy +
+    process.hltPFTauTrkIsolationDiscriminator3hitsTauLegacy
+    + process.hltPFTauAgainstMuonDiscriminatorLooseTauLegacy
+    + process.hltPFTauAgainstMuonDiscriminatorHoPTauLegacy
+    # pat
+    + process.hltPatTausLegacy + process.selectedHltPatTausLegacy
+)
