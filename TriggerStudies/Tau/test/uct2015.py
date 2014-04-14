@@ -3,19 +3,19 @@ process.load("L1Trigger.UCT2015.emulation_cfi")
 #process.load("L1Trigger.UCT2015.emulationMC_cfi")
 
 # Determine which calibration to use
-from L1Trigger.UCT2015.emulation_cfi import \
-        eg_calib_v1, eg_calib_v3, eg_calib_v4
+#from L1Trigger.UCT2015.emulation_cfi import \
+#        eg_calib_v1, eg_calib_v3, eg_calib_v4
 
-ecal_calibration = eg_calib_v4 #eg_calib_v1 eg_calib_v3
-process.RCTConfigProducers.eGammaECalScaleFactors = ecal_calibration
-process.RCTConfigProducers.jetMETECalScaleFactors = ecal_calibration
-process.UCT2015EClusterProducer.ecalCalibration = ecal_calibration
+#ecal_calibration = eg_calib_v4 #eg_calib_v1 eg_calib_v3
+#process.RCTConfigProducers.eGammaECalScaleFactors = ecal_calibration
+#process.RCTConfigProducers.jetMETECalScaleFactors = ecal_calibration
+#process.UCT2015EClusterProducer.ecalCalibration = ecal_calibration
 
-process.RCTConfigProducers.eicIsolationThreshold = 3
-process.RCTConfigProducers.hActivityCut = 0.5
+#process.RCTConfigProducers.eicIsolationThreshold = 3
+#process.RCTConfigProducers.hActivityCut = 0.5
 
 #process.load("L1Trigger.UCT2015.uct2015L1ExtraParticles_cfi")
-process.load("L1Trigger.UCT2015.uctl1extraparticles_cfi.py")
+process.load("L1Trigger.UCT2015.uctl1extraparticles_cfi")
 #clone UCT gt stuff to have isoTau version in parallel
 process.gctUCTDigis2 = process.gctUCTDigis.clone(
     tauIsolated  = cms.InputTag("UCT2015Producer","IsolatedTauUnpacked")
