@@ -1311,7 +1311,7 @@ process.hltPFTauSequncePxl2NPTuning = cms.Sequence(
     process.hltPFTauTrkIsolationDiscriminator3hitsPxl2R18NInfNP
     +process.hltPFTauAgainstMuonDiscriminatorLoosePxl2R18NInfNP
     +process.hltPFTauAgainstMuonDiscriminatorHoPPxl2R18NInfNP
-    +process.hltPFTauAgainstElectronDiscriminatorLoosePxl2R12NInfNP
+    +process.hltPFTauAgainstElectronDiscriminatorLoosePxl2R18NInfNP
 
     )
 
