@@ -113,7 +113,7 @@ process.hltPFTauLooseIsolationDiscriminatorOffVtx = cms.EDProducer(
           minGammaEt = cms.double( 0.5 ),
           minTrackPixelHits = cms.uint32( 0 ),
           minTrackHits = cms.uint32( 3 ),
-          maxDeltaZ = cms.double( 0.4 ),
+          maxDeltaZ = cms.double( 0.2 ), #MB
           maxTransverseImpactParameter = cms.double( 0.2 )
           ),
        primaryVertexSrc = cms.InputTag( "offlinePrimaryVertices" ),
@@ -170,7 +170,7 @@ process.hltPFTauECalIsolationDiscriminatorOffVtx = cms.EDProducer(
           minGammaEt = cms.double( 0.5 ),
           minTrackPixelHits = cms.uint32( 0 ),
           minTrackHits = cms.uint32( 3 ),
-          maxDeltaZ = cms.double( 0.4 ),
+          maxDeltaZ = cms.double( 0.2 ), #MB
           maxTransverseImpactParameter = cms.double( 0.2 )
           ),
        primaryVertexSrc = cms.InputTag( "offlinePrimaryVertices" ),
@@ -226,7 +226,7 @@ process.hltPFTauTrkIsolationDiscriminatorOffVtx = cms.EDProducer(
           minGammaEt = cms.double( 0.5 ),
           minTrackPixelHits = cms.uint32( 0 ),
           minTrackHits = cms.uint32( 3 ),
-          maxDeltaZ = cms.double( 0.4 ),
+          maxDeltaZ = cms.double( 0.2 ), #MB
           maxTransverseImpactParameter = cms.double( 0.2 )
           ),
        primaryVertexSrc = cms.InputTag( "offlinePrimaryVertices" ),
@@ -372,7 +372,7 @@ process.hltPFTauPiZeros = cms.EDProducer( "RecoTauPiZeroProducer",
           primaryVertexSrc = cms.InputTag( "hltIsoMuonVertex" ),
           leadingTrkOrPFCandOption = cms.string( "leadPFCand" ),
           signalQualityCuts = cms.PSet(
-            maxDeltaZ = cms.double( 0.4 ),
+            maxDeltaZ = cms.double( 0.2 ), #MB
             minTrackPt = cms.double( 0.0 ),
             useTracksInsteadOfPFHadrons = cms.bool( False ),
             maxTrackChi2 = cms.double( 1000.0 ),
@@ -419,7 +419,7 @@ process.hltTauPFJetsRecoTauChargedHadrons = cms.EDProducer(
              maxTrackChi2 = cms.double(1000.0), #MB 100.0->1000.0
              minTrackPixelHits = cms.uint32(0),
              minGammaEt = cms.double(0.5),
-             maxDeltaZ = cms.double(0.4),
+             maxDeltaZ = cms.double(0.2), #MB
              minNeutralHadronEt = cms.double(30.0),
              maxTransverseImpactParameter = cms.double(0.2) #MB: 0.03->0.2
           ),
@@ -511,7 +511,7 @@ process.hltPFTausNPSansRef = cms.EDProducer( "RecoTauProducer",
             minGammaEt = cms.double( 0.5 ),
             minTrackPixelHits = cms.uint32( 0 ),
             minTrackHits = cms.uint32( 3 ),
-            maxDeltaZ = cms.double( 0.4 ),
+            maxDeltaZ = cms.double( 0.2 ), #MB
             maxTransverseImpactParameter = cms.double( 0.2 )
           ),
           isolationQualityCuts = cms.PSet( 
@@ -911,7 +911,7 @@ process.hltPFTausPxl2R18N3NPSansRef.builders[0].maxSignalConeChargedHadrons = 3
 
 process.hltPFTausPxl2R12N5NPSansRef = process.hltPFTausPxl2NPSansRef.clone()
 process.hltPFTausPxl2R12N5NPSansRef.builders[0].signalConeChargedHadrons = "0.12"
-process.hltPFTausPxl2R12N5NPSansRef.builders[0].signalConePiZeros = "0.15"
+process.hltPFTausPxl2R12N5NPSansRef.builders[0].signalConePiZeros = "0.12"
 process.hltPFTausPxl2R12N5NPSansRef.builders[0].maxSignalConeChargedHadrons = 5
 
 process.hltPFTausPxl2R15N5NPSansRef = process.hltPFTausPxl2NPSansRef.clone()
@@ -926,7 +926,7 @@ process.hltPFTausPxl2R18N5NPSansRef.builders[0].maxSignalConeChargedHadrons = 5
 
 process.hltPFTausPxl2R12NInfNPSansRef = process.hltPFTausPxl2NPSansRef.clone()
 process.hltPFTausPxl2R12NInfNPSansRef.builders[0].signalConeChargedHadrons = "0.12"
-process.hltPFTausPxl2R12NInfNPSansRef.builders[0].signalConePiZeros = "0.15"
+process.hltPFTausPxl2R12NInfNPSansRef.builders[0].signalConePiZeros = "0.12"
 process.hltPFTausPxl2R12NInfNPSansRef.builders[0].maxSignalConeChargedHadrons = 999
 
 process.hltPFTausPxl2R15NInfNPSansRef = process.hltPFTausPxl2NPSansRef.clone()
